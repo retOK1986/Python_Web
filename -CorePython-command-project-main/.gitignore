@@ -1,0 +1,7 @@
+**/.idea
+**/__pycache__
+build
+dist
+user_assistant.egg-info
+venv
+databases
