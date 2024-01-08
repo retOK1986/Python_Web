@@ -1,16 +1,14 @@
-from typing import Type
-
-from user_assistant.notes.notes import Notes
 from user_assistant.console.console import Console
 from user_assistant.class_fields.tag import Tag
 from user_assistant.handlers.input_value import input_value
 from user_assistant.console.table_format.notes_table import note_titles, get_notes_row
 
+from .notes_abstract import NotesAbstract
 
+class NotesSearchNotesByTagHandler(NotesAbstract):
 
-
-def search_notes_by_tag(notes: Notes):
-    tag = input_value('tag', Tag)
-    result_notes = notes.search_by_tags(tag.value)
-    Console.print_table(f"Notes found for tag: {tag}", note_titles, list(map(get_notes_row,result_notes)))
+    def execute(self):
+        tag = input_value('tag', Tag)
+        result_notes = self.notes.search_by_tags(tag.value)
+        Console.print_table(f"Notes found for tag: {tag}", note_titles, list(map(get_notes_row,result_notes)))
 
