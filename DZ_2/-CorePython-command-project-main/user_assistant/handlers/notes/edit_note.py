@@ -1,5 +1,3 @@
-from typing import Type
-
 from user_assistant.class_fields.author import Author
 from user_assistant.class_fields.text import Text
 from user_assistant.console.console import Console

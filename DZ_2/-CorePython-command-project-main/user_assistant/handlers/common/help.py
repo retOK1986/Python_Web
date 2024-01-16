@@ -36,7 +36,7 @@ sort_files_documentation = [
     [CommandEnum.SORT_FILES, 'folder', 'Sorting files inside folder by categories: music, image, video, documents'],
 ]
 
-additional_commands_documentation = [
+additional_CommandEnum_documentation = [
     [CommandEnum.EXIT, 'Exit from user assistant'],
     [CommandEnum.CLOSE, 'Exit from user assistant'],
     [CommandEnum.HELP, 'Show documentations'],

@@ -7,7 +7,12 @@ from user_assistant.console.console import Console
 from user_assistant.console.table_format.address_book_table import address_book_titles, get_address_book_row
 from .address_book_abstract import AddressBookAbstract
 
-FIELDS_CLASS = {'name': (Name, None), 'birthday': (Date, Date.DATE_FORMAT_EXAMPLE), 'email': (Mail, Mail.MAIL_FORMAT_EXAMPLE), 'address': (Address, None)}
+FIELDS_CLASS = {
+    'name': (Name, None),
+    'birthday': (Date, Date.DATE_FORMAT_EXAMPLE),
+    'email': (Mail, Mail.MAIL_FORMAT_EXAMPLE),
+    'address': (Address, None)
+    }
 
 
 class AddressBookEditContactHandler(AddressBookAbstract):

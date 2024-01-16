@@ -17,8 +17,8 @@ from .notes.remove_note import NotesRemoveNoteHandler
 from .notes.search_notes_by_author import NotesSearchNotesByAuthorHandler
 from .notes.search_notes_by_tag import NotesSearchNotesByTagHandler
 from .notes.edit_note import NotesEditNoteHandler
-from .notes.sort_by_tags import NotesSortByTagsHandler
-from .notes.sort_by_author import NotesSortByAuthorHandler
+from .notes.sort_notes_by_tags import NotesSortByTagsHandler
+from .notes.sort_notes_by_author import NotesSortByAuthorHandler
 from .notes.remove_tags import NotesRemoveTagsHandler
 from .notes.add_tags import NotesAddTagsHandlerHandler
 from .notes.show_all_notes import NotesShowAllNotesHandler
@@ -44,10 +44,10 @@ handlers = {
     CommandEnum.EDIT_NOTE.value: NotesEditNoteHandler,
     CommandEnum.REMOVE_NOTE.value: NotesRemoveNoteHandler,
     CommandEnum.SHOW_ALL_NOTES.value: NotesShowAllNotesHandler,
-    CommandEnum.SEARCH_BY_TAG.value: NotesSearchNotesByTagHandler,
-    CommandEnum.SEARCH_BY_AUTHOR.value: NotesSearchNotesByAuthorHandler,
-    CommandEnum.SORT_BY_TAGS.value: NotesSortByTagsHandler,
-    CommandEnum.SORT_BY_AUTHOR.value: NotesSortByAuthorHandler,
+    CommandEnum.SEARCH_NOTES_BY_TAG.value: NotesSearchNotesByTagHandler,
+    CommandEnum.SEARCH_NOTES_BY_AUTHOR.value: NotesSearchNotesByAuthorHandler,
+    CommandEnum.SORT_NOTES_BY_TAGS.value: NotesSortByTagsHandler,
+    CommandEnum.SORT_NOTES_BY_AUTHOR.value: NotesSortByAuthorHandler,
     CommandEnum.REMOVE_TAGS.value: NotesRemoveTagsHandler,
     CommandEnum.ADD_TAGS.value: NotesAddTagsHandlerHandler,
 

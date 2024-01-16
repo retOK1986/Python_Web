@@ -6,4 +6,8 @@ from .address_book_abstract import AddressBookAbstract
 
 class AddressBookShowAllContactsHandler(AddressBookAbstract):
     def execute(self):
-        Console.print_table('All contacts', address_book_titles, list(map(get_address_book_row, self.address_book.data.va
+        Console.print_table(
+        'All contacts',
+         address_book_titles,
+         list(map(get_address_book_row, self.address_book.data.values())),
+         )
