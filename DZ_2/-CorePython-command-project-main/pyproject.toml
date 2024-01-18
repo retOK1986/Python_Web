@@ -2,7 +2,7 @@
 name = "test-poetry"
 version = "0.1.0"
 description = ""
-authors = ["[Markovets Vyacheslav <retOK@i.ua>"]
+authors = ["Markovets Vyacheslav <retOK@i.ua>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
