@@ -83,5 +83,9 @@ def main(folder: Path):
 
 
 if __name__ == "__main__":
-    folder_process = Path(sys.argv[1])
+    if len(sys.argv) > 1:
+        folder_process = Path(sys.argv[1])
+    else:
+        print("You did not specify a folder path. Please specify the path as an argument")
+        sys.exit(1)
     main(folder_process.resolve())
