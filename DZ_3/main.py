@@ -75,7 +75,7 @@ def main(folder: Path):
             executor.submit(handle_archive, file, folder / 'archives' / 'TAR')
     #    Збереження файлів які відсуині у списку в папку  MY_OTHER
         for file in file_parser.MY_OTHER:
-            handle_media(file, folder / 'MY_OTHER')
+            executor.submit(handle_files, file, folder / 'MY_OTHER')
 
     for folder in file_parser.FOLDERS[::-1]:
         # Видаляємо пусті папки після сортування
