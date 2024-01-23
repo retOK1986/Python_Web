@@ -1,5 +1,7 @@
 import sys
 from pathlib import Path
+from concurrent.futures import ThreadPoolExecutor
+
 # Зображення
 JPEG_IMAGES = []
 JPG_IMAGES = []
@@ -67,26 +69,28 @@ def get_extension(name: str) -> str:
     return Path(name).suffix[1:].upper()  # suffix[1:] -> .jpg -> jpg
 
 def scan(folder: Path):
-    for item in folder.iterdir():
+    with ThreadPoolExecutor() as executor:
+        for item in folder.iterdir():
         # Робота з папкою
-        if item.is_dir():  # перевіряємо чи обєкт папка
-            if item.name not in ('archives', 'video', 'audio', 'documents', 'images', 'MY_OTHER'):
-                FOLDERS.append(item)
-                scan(item)
-            continue
-        # Робота з файлом
-        extension = get_extension(item.name)  # беремо розширення файлу
-        full_name = folder / item.name  # беремо повний шлях до файлу
-        if not extension:
+            if item.is_dir():  # перевіряємо чи обєкт папка
+                if item.name not in ('archives', 'video', 'audio', 'documents', 'images', 'MY_OTHER'):
+                    FOLDERS.append(item)
+                    executor.submit(scan, item)
+            else:
+                process_file(item)
+def process_file(item: Path): # Робота з файлом
+    extension = get_extension(item.name)# беремо розширення файлу
+    full_name = item.parent / item.name # беремо повний шлях до файлу
+    if not extension:
+        MY_OTHER.append(full_name)
+    else:
+        try:
+            ext_reg = REGISTER_EXTENSION[extension]
+            ext_reg.append(full_name)
+            EXTENSIONS.add(extension)
+        except KeyError:
+            UNKNOWN.add(extension)  # .mp4, .mov, .avi
             MY_OTHER.append(full_name)
-        else:
-            try:
-                ext_reg = REGISTER_EXTENSION[extension]
-                ext_reg.append(full_name)
-                EXTENSIONS.add(extension)
-            except KeyError:
-                UNKNOWN.add(extension)  # .mp4, .mov, .avi
-                MY_OTHER.append(full_name)
 
 if __name__ == '__main__':
     folder_process = sys.argv[1]
@@ -121,12 +125,3 @@ if __name__ == '__main__':
     print(f'EXTENSIONS: {EXTENSIONS}')
     print(f'UNKNOWN: {UNKNOWN}')
     print(f'FOLDERS: {FOLDERS}')
-
-
-
-
-
-
-
-
-
