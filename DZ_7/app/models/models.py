@@ -8,7 +8,7 @@ class Student(Base):
     id = Column(Integer, primary_key=True)
     fullname = Column(String(150), nullable=False)
     group_id = Column('group_id', ForeignKey('groups.id', ondelete='CASCADE'))
-    group = relationship('Group', backref='students')
+    group = relationship('Group', back_populates='students')
 
 class Group(Base):
     __tablename__ = 'groups'
@@ -36,5 +36,5 @@ class Grade(Base):
     grade_date = Column(Date, nullable=True)
     student_id = Column(Integer, ForeignKey('students.id', ondelete='CASCADE'))
     subject_id = Column(Integer, ForeignKey('subjects.id', ondelete='CASCADE'))
-    student = relationship('Student', backref='grades')
-    subject = relationship('Subject', backref='grades')
+    student = relationship('Student', back_populates='grades')
+    subject = relationship('Subject', back_populates='grades')
