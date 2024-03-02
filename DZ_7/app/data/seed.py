@@ -11,26 +11,26 @@ session = Session()
 
 faker = Faker('uk-UA')
 
-# Створення груп
+# Заповнення таблиці  груп
 for _ in range(3):
     group = Group(name=f'{faker.word()} {faker.random_digit()}')
     session.add(group)
 session.commit()
 
-# Створення викладачів
+# Заповнення таблиці викладачів
 for _ in range(3):
     teacher = Teacher(fullname=faker.name())
     session.add(teacher)
 session.commit()
 
-# Створення предметів
+# Заповнення таблиці предметів
 teachers = session.query(Teacher).all()
 for _ in range(5):
     subject = Subject(name=f'{faker.word()} {faker.random_digit()}', teacher=random.choice(teachers))
     session.add(subject)
 session.commit()
 
-# Створення студентів і оцінок
+# Заповнення таблиці студентів і оцінок
 groups = session.query(Group).all()
 subjects = session.query(Subject).all()
 for _ in range(50):  # Створюємо близько 50 студентів
