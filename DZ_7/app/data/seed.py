@@ -2,7 +2,6 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from faker import Faker
 import random
-from datetime import datetime
 from app.models.models import Base, Student, Group, Teacher, Subject, Grade
 
 # Підключення до бази даних
