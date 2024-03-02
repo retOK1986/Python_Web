@@ -271,6 +271,3 @@ def select_10():
     .join(Teacher, Teacher.id == Subject.teacher_id) \
     .filter(Student.fullname == selected_student, Teacher.fullname == selected_teacher) \
     .group_by(Subject.name).all()
-
-if __name__ == '__main__':
-    print(select_10())
