@@ -1,7 +1,7 @@
 import json
 from mongoengine import connect, disconnect, DoesNotExist
-from app.models.author import Author
-from app.models.quote import Quote
+from Part1.app.models.author import Author
+from Part1.app.models.quote import Quote
 
 disconnect()
 
